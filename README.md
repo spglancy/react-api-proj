@@ -51,13 +51,16 @@ This project was boot strapped with Create React App. See the notes [here](creat
 
 ### Coding Challenges 
 
-- Move into Component 
-- Handle non weather data 
+- Move weather into a Component 
+- Handle non weather data returned from the API
+- Build sub components
 - Style the component 
-- 
+- Use the Browser API to get the Geo Location
+- Display a 5 day forcast
+- Choose a custom API
 
 - Make a component that display the weather. Currently the weather is displayed as part of the App component. You want to move the weather out of App and display your new Weather component in App. 
-- Handle Errors and conditionally display a message. Currently if you submit an invalid zip code the request to the server is valid but the JSON returned is not valid weather data. Instead it's an object that looks liek this: 
+- Handle Errors and conditionally display a message. Currently if you submit an invalid zip code the request to the server is valid but the JSON returned is not valid weather data. Instead it's an object that looks like this: 
 
 {cod: "404", message: "city not found"}
 
