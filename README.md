@@ -1,44 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React API Challenge 
 
-## Available Scripts
+This is a starter project for the React API project challenge. The goal of this challenge is to use React with a web API. 
 
-In the project directory, you can run:
+The sample code here display the weather data from [OpenWeatherMap.org](https://openweathermap.org). 
 
-### `npm start`
+## Overview 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project focusses on two concepts used in react: 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+1. Form input and the controlled component pattern.
+1. Conditionally rendering components. 
 
-### `npm test`
+## Controlled Components and form input
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Forms work differently in react due to the way React handles the DOM with it's virtual DOM. You'll want to understand and master this pattern as it's required when working with form elements, this includes input, checkboxes, radio buttons, and select elements. 
 
-### `npm run build`
+In a nutshell the component holds the value of form elements on component state. This value is set when the component's value is changed, the form element's value is set to the value on state. This may sound a little circular because it is! 
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the example is happens at the input element in the form. Be sure to look at the comments. 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Read more [here](https://reactjs.org/docs/forms.html).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Conditionally rendering components 
 
-### `npm run eject`
+Single Page Applications need to control what is displayed on the page without loading a new page. Using React you will do that by sometimes rendering a component and sometimes not rendering a component. Or, sometimes rendering one component, and rednering a different component at other stimes. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+We will refer to this conditionally rendering. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+There are several patterns for this. The example shows one method. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Read more about conditional rednering [here](https://reactjs.org/docs/conditional-rendering.html).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Challenges 
 
-## Learn More
+The goal of this assignment is to create a React component that displays data from web API. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The goal is to complete this challenge in 3 hours. To do this you will need to limit your scope. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Getting started 
+
+1. Fork this repo
+1. Post a link to your repo in the tracker
+1. Install dependencies: `npm install`
+1. Run the project: `npm start`
+1. Visit the project at: [http://localhost:3000](http://localhost:3000)
+
+From here the project should update in the browser as you work. 
+
+This project was boot strapped with Create React App. See the notes [here](create-react-app-notes.md) for more information.
+
+### Coding Challenges 
+
+- Move into Component 
+- Handle non weather data 
+- Style the component 
+- 
+
+- Make a component that display the weather. Currently the weather is displayed as part of the App component. You want to move the weather out of App and display your new Weather component in App. 
+- Handle Errors and conditionally display a message. Currently if you submit an invalid zip code the request to the server is valid but the JSON returned is not valid weather data. Instead it's an object that looks liek this: 
+
+{cod: "404", message: "city not found"}
+
+As it is the component displays nothing or it displays soem weather data based on this.state.weatherData
+
+- null : displays nothing 
+- any other value: displays some JSX 
+
+The problem is that some times you get a valid repsonse but the response is not weather data. Which case you don't have all of the properties that you were expecting and instead you'll want to display a helpful message in place of the nonexistent weather data. 
+
