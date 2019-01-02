@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 
 import './App.css';
@@ -32,7 +33,7 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault()
     // ! Get your own API key ! 
-    const apikey = '467355df4c808dd6134a3b64e9ace282'
+    const apikey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY
     // Get the zip from the input
     const zip = this.state.inputValue
     // Form an API request URL with the apikey and zip
