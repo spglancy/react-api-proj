@@ -31,9 +31,23 @@ There are several patterns for this. The example shows one method.
 
 Read more about conditional rednering [here](https://reactjs.org/docs/conditional-rendering.html).
 
+## Getting started 
+
+To run this example project you will need to make an account with [OpenWeatherMap](https://openweathermap.org) and generate an API key and set that key as an envoronment variable in this project. Follow these steps:
+
+- Download or fork with project repo
+- Create an account at [OpenWeatherMap.org](https://openweathermap.org)
+- Go your profile and select API Keys. 
+- Generate a key and copy the key to the clipboard
+- Back in this project add the following to the end of .env file: 
+
+`REACT_APP_OPENWEATHERMAP_API_KEY=<YOUR_OPENWEATHERMAP_API_KEY_HERE>`
+
+From here you should be able to run the project and get weather data from Open Weather Map. 
+
 ## Challenges 
 
-The goal of this assignment is to create a React component that displays data from web API. 
+The goal of this assignment is to create a React component that displays data from a web API. 
 
 The goal is to complete this challenge in 3 hours. To do this you will need to limit your scope. 
 
@@ -51,23 +65,62 @@ This project was boot strapped with Create React App. See the notes [here](creat
 
 ### Coding Challenges 
 
-- Move weather into a Component 
-- Handle non weather data returned from the API
-- Build sub components
-- Style the component 
+The challenges here are to refactor the code provided. 
+
+**Challenge 1** Weather component 
+
+Goal create a Weather component. Currently all of the work of loading and displaying the weather data is handled by  `App.js`. You should:
+
+- Make a new component `Weather`. This component should load and display the weather data. 
+- Import the Weather component into `App.js` 
+- Display the new Weather component in `App.js`.
+- You're done when all of the work of loading and displaying weather data is removed from App.js, and the Weather component does all the work.  
+
+**Challenge 2** Handling errors 
+
+Problem, if the server returns something other than weather data the app breaks. You can test this by entering an invalid zip code. 
+
+The current implementation has some holes. You need to fix these. One big problem is an error when an invalid zip code is used. The problem occurs because the server returns an object that doesn't include properties the script is looking for. When an invalid zip code is supplied the JSON returned from the server looks like: `{cod: "404", message: "city not found"}`. Your script should look for: `cod:"404"`. When the weather data was fetched successfully you should get `cod:"200"`. 
+
+- Handle this gracefully. Your script should:
+  - Spot a successful response `cod:200` and display the weather data when it does. 
+  - It should spot an error `code: 404` (or other) and handle this by displaying a message when this occurs. 
+- Stretch Goal: make a component that displays error messages. Render this component when there is an error, render the weather data when there is no error. 
+  - Bonus: pass the error message into this component as a prop and  component should display the message. 
+
+**Challenge 3** Sub Components
+
+The Weather Component is a little monolithic. It does a little too much. In many cases it's better to have smaller components that handle specific tasks. 
+
+Goal build components that display various elements of the weather data. 
+
+- **Temperature component**. Create a component whose sole task is to display teh temperature. You should pass the temperature into the component as a prop and the component should display it. 
+  - Bonus! The temperature is supplied in kelvin. Your Temperature component should be able to display the temperature as fahrenheit. The formula is: `300K × 9/5 - 459.67`. 
+  - Stretch goal! Temperature component takes a parameter `isMetric` if this is true the component converts the temperature from Kelvin to Celsius.
+- **WeatherDescription** component. This component takes the values used for title and description and displays them. 
+- **Atmosphere** component. Create a another component that displays the air pressure and humidity. Call this component Atmosphere. It should take the values for pressure and humidity in as props and display them. 
+
+The tasks above as you to build three new components. These should all be children of the Weather component you created in the first challenge. 
+
+**Challenge 4** Style the component! 
+
+Currently there a minimal set of styles. Your goal is to expand on these. 
+
+- Your goal is to add some styles to the components you have created. 
+
+Look at App.css. This file has the has CSS styles that are imported into App.js on line 4 of that file. 
+
+**Note!** Importing CSS in this way works with Create React App starter projects because it is part of the build system. 
+
+- Bonus, create a css file for each component you create and import that set of styles into the component. 
+
+**Stretch Challenges** 
+
+Try any or all of these stretch challenges. 
+
 - Use the Browser API to get the Geo Location
+  - The OpenWeatherMap API has an option where you can supply Geo Location rather than the zip code to get weather data. 
 - Display a 5 day forcast
-- Choose a custom API
-
-- Make a component that display the weather. Currently the weather is displayed as part of the App component. You want to move the weather out of App and display your new Weather component in App. 
-- Handle Errors and conditionally display a message. Currently if you submit an invalid zip code the request to the server is valid but the JSON returned is not valid weather data. Instead it's an object that looks like this: 
-
-{cod: "404", message: "city not found"}
-
-As it is the component displays nothing or it displays soem weather data based on this.state.weatherData
-
-- null : displays nothing 
-- any other value: displays some JSX 
-
-The problem is that some times you get a valid repsonse but the response is not weather data. Which case you don't have all of the properties that you were expecting and instead you'll want to display a helpful message in place of the nonexistent weather data. 
+  - This project uses the current weather forecast. The OpenWeatherMap also provides a 5 day forcast. Your goal is to display this. 
+- Find another simple API and make a component to dispaly data from your chosen API. 
 

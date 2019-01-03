@@ -84,7 +84,8 @@ class App extends Component {
         <div>Pressure: {pressure}</div>
         <div>Humidity: {humidity}</div>
         <div>Temp Min: {temp_min} Max:{temp_max}</div>
-      </div>)
+      </div>
+    )
   }
 
   render() {
