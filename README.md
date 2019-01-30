@@ -94,7 +94,7 @@ The Weather Component is a little monolithic. It does a little too much. In many
 
 Goal build components that display various elements of the weather data. 
 
-- **Temperature component**. Create a component whose sole task is to display teh temperature. You should pass the temperature into the component as a prop and the component should display it. 
+- **Temperature component**. Create a component whose sole task is to display the temperature. You should pass the temperature into the component as a prop and the component should display it. 
   - Bonus! The temperature is supplied in kelvin. Your Temperature component should be able to display the temperature as fahrenheit. The formula is: `300K × 9/5 - 459.67`. 
   - Stretch goal! Temperature component takes a parameter `isMetric` if this is true the component converts the temperature from Kelvin to Celsius.
 - **WeatherDescription** component. This component takes the values used for title and description and displays them. 
@@ -124,3 +124,12 @@ Try any or all of these stretch challenges.
   - This project uses the current weather forecast. The OpenWeatherMap also provides a 5 day forcast. Your goal is to display this. 
 - Find another simple API and make a component to dispaly data from your chosen API. 
 
+**Challenge 4**
+
+During the loading process your app is limbo, you haven't gotten a success or an error yet. In this state your app should display a message letting us know that the app is in the loading process. 
+
+To do this use keep track of the status of the app and conditionally render a component to display the status of the app. 
+
+**Challenge 5** 
+
+Use an API of your choice. This can be any API you like. Render data from the API with React. BUild components and sub-components to do the work and display your data. 
