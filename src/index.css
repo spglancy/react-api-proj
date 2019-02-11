@@ -12,3 +12,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.character {
+  width: 320px;
+  margin: 10px;
+  height: 450px;
+}
+
+.button {
+  width: 80px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.buttonContainer {
+  width: 300px;
+  margin: auto;
+}
+
+.charContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
